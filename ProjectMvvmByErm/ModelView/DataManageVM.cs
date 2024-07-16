@@ -35,7 +35,7 @@ namespace ProjectMvvmByErm.ModelView
             set { allPositions = value; NotifyPropertyChanged("AllPositions"); }
         }
 
-        //методы открытия окон
+        //методы открытия оконw
 
 
         private void SetCenterPositionAndOpen(Window window)
