@@ -1,8 +1,10 @@
 ﻿using ProjectMvvmByErm.Model;
+using ProjectMvvmByErm.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -36,7 +38,23 @@ namespace ProjectMvvmByErm.ModelView
         }
 
         //методы открытия оконw
+        private void OpenAddDepartmentWindow()
+        {
+            AddNewDepartmentWindow addNewDepartmentWindow = new AddNewDepartmentWindow();
+            SetCenterPositionAndOpen(addNewDepartmentWindow);
+        }
 
+        private void OpenAddUserWindow()
+        {
+            AddNewUserWindow addNewUserWindow = new AddNewUserWindow();
+            SetCenterPositionAndOpen(addNewUserWindow);
+        }
+
+        private void OpenAddPositionWindow()
+        {
+            AddNewPositionWindow addNewPositionWindow = new AddNewPositionWindow();
+            SetCenterPositionAndOpen(addNewPositionWindow);
+        }
 
         private void SetCenterPositionAndOpen(Window window)
         {
