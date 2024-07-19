@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindowMenu" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel>
+            <StackPanel Margin="20">
+                <Label HorizontalAlignment="Center" FontSize="30">
+                    MENU
+                </Label>
+            </StackPanel>
+            <StackPanel Margin="30">
+                <Button Margin="15" Width="300" Height="30">Добавить нового сотрудника</Button>
+                <Button Margin="15" Width="300" Height="30">Добавить новую позицию</Button>
+                <Button Margin="15" Width="300" Height="30">Добавить новый отдел</Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
