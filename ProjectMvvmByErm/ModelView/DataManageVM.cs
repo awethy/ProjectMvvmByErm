@@ -37,6 +37,7 @@ namespace ProjectMvvmByErm.ModelView
             set { allPositions = value; NotifyPropertyChanged("AllPositions"); }
         }
 
+        #region Методы открытия окон WW
         //методы открытия оконw
         private void OpenAddDepartmentWindow()
         {
@@ -62,6 +63,7 @@ namespace ProjectMvvmByErm.ModelView
             window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             window.ShowDialog();
         }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
