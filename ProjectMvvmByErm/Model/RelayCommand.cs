@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace ProjectMvvmByErm.Model
 {
-    public class RelayCommand :ICommand
+    public class RelayCommand : ICommand
     {
         private Action<object> _execute;
         private Func<object, bool> _canExecute;

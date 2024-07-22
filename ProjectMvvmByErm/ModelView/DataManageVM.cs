@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace ProjectMvvmByErm.ModelView
 {
-    public class DataManageVM :INotifyPropertyChanged
+    public class DataManageVM : INotifyPropertyChanged
     {
         //все отделы
         private List<Department> allDepartments = DataWorker.GetAllDepartments();
@@ -37,21 +37,62 @@ namespace ProjectMvvmByErm.ModelView
             set { allPositions = value; NotifyPropertyChanged("AllPositions"); }
         }
 
-        #region Методы открытия окон WW
+        #region КОММАНДЫ ОТКРЫТИЯ ОКОН
+        private RelayCommand openAddNewUserWin;
+        public RelayCommand OpenAddNewUserWin
+        {
+            get
+            {
+                return openAddNewUserWin ?? new RelayCommand(obj =>
+                {
+                    OpenAddUserWindowMethod();
+                }
+                );
+            }
+        }
+
+        private RelayCommand openAddNewPositionWin;
+        public RelayCommand OpenAddNewPositionWin
+        {
+            get
+            {
+                return openAddNewPositionWin ?? new RelayCommand(obj =>
+                {
+                    OpenAddPositionWindowMethod();
+                }
+                );
+            }
+        }
+
+        private RelayCommand openAddNewDepartmentWin;
+        public RelayCommand OpenAddNewDepartmentWin
+        {
+            get
+            {
+                return openAddNewDepartmentWin ?? new RelayCommand(obj =>
+                {
+                    OpenAddDepartmentWindowMethod();
+                }
+                );
+            }
+        }
+        #endregion
+
+        #region МЕТОДЫ ОТКРЫТИЯ ОКОН WW
         //методы открытия оконw
-        private void OpenAddDepartmentWindow()
+        private void OpenAddDepartmentWindowMethod()
         {
             AddNewDepartmentWindow addNewDepartmentWindow = new AddNewDepartmentWindow();
             SetCenterPositionAndOpen(addNewDepartmentWindow);
         }
 
-        private void OpenAddUserWindow()
+        private void OpenAddUserWindowMethod()
         {
             AddNewUserWindow addNewUserWindow = new AddNewUserWindow();
             SetCenterPositionAndOpen(addNewUserWindow);
         }
 
-        private void OpenAddPositionWindow()
+        private void OpenAddPositionWindowMethod()
         {
             AddNewPositionWindow addNewPositionWindow = new AddNewPositionWindow();
             SetCenterPositionAndOpen(addNewPositionWindow);
