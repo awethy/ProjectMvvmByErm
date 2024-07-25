@@ -20,10 +20,16 @@ namespace ProjectMvvmByErm.View
     /// </summary>
     public partial class MainWindowMenu : Window
     {
+        public static ListView AllDepartmentsView;
+        public static ListView AllUsersView;
+        public static ListView AllPositionsView;
         public MainWindowMenu()
         {
             InitializeComponent();
             DataContext = new DataManageVM();
+            AllDepartmentsView = ViewAllDepartments;
+            AllUsersView = ViewAllUsers;
+            AllPositionsView = ViewAllPositions;
         }
     }
 }

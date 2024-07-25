@@ -59,6 +59,8 @@ namespace ProjectMvvmByErm.ModelView
                     else
                     {
                         resultStr = DataWorker.CreateDepartment(DepartmentName);
+                        UpdateAllViews();
+                        SetNullValuesToProperties();
                         win.Close();
                     }
                 }
@@ -142,6 +144,54 @@ namespace ProjectMvvmByErm.ModelView
             Control block = win.FindName(blockName) as Control;
             block.BorderBrush = Brushes.Red;
         }
+
+        #region UPDATE VIEWS
+        private void SetNullValuesToProperties()
+        {
+            //для пользователей
+
+            //для позиций
+
+            //для отделов
+            DepartmentName = null;
+        }
+
+
+        private void UpdateAllViews()
+        {
+            UpadateAllDepartmentsView();
+            UpadateAllUsersView();
+            UpadateAllUsersView();
+        }
+
+        private void UpadateAllDepartmentsView()
+        {
+            AllDepartments = DataWorker.GetAllDepartments();
+            MainWindowMenu.AllDepartmentsView.ItemsSource = null;
+            MainWindowMenu.AllDepartmentsView.Items.Clear();
+            MainWindowMenu.AllDepartmentsView.ItemsSource = AllDepartments;
+            MainWindowMenu.AllDepartmentsView.Items.Refresh();
+        }
+
+        private void UpadateAllUsersView()
+        {
+            AllUsers = DataWorker.GetAllUsers();
+            MainWindowMenu.AllUsersView.ItemsSource = null;
+            MainWindowMenu.AllUsersView.Items.Clear();
+            MainWindowMenu.AllUsersView.ItemsSource = AllUsers;
+            MainWindowMenu.AllUsersView.Items.Refresh();
+        }
+
+        private void UpadateAllPositionsView()
+        {
+            AllPositions = DataWorker.GetAllPositions();
+            MainWindowMenu.AllPositionsView.ItemsSource = null;
+            MainWindowMenu.AllPositionsView.Items.Clear();
+            MainWindowMenu.AllPositionsView.ItemsSource = AllUsers;
+            MainWindowMenu.AllPositionsView.Items.Refresh();
+        }
+
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
