@@ -66,7 +66,6 @@ namespace ProjectMvvmByErm.ModelView
             }
         }    
 
-
         #endregion
 
         #region КОММАНДЫ ОТКРЫТИЯ ОКОН
