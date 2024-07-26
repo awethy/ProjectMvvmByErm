@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ProjectMvvmByErm.ModelView
 {
@@ -40,6 +41,9 @@ namespace ProjectMvvmByErm.ModelView
         }
 
         public string DepartmentName { get; set; }
+        public string UserName { get; set; }
+        public string UserPhone { get; set; }
+        public string UserPosId { get; set; }
 
         #region КОММАНДЫ СОЗДАНИЯ, УДАЛЕНИЕ И ИЗМЕНЕНИЯ ПОЗИЦИЙ
 
@@ -66,7 +70,32 @@ namespace ProjectMvvmByErm.ModelView
                 }
                 );
             }
-        }    
+        }
+
+        private RelayCommand addNewUser;
+        public RelayCommand AddNewUser
+        {
+            get
+            {
+                return addNewUser ?? new RelayCommand(obj =>
+                {
+                    Window win = obj as Window;
+                    string resultStr = "";
+                    if (UserName == null || UserName.Replace(" ", "").Length == 0)
+                    {
+                        SetRedBlockControll(win, "NameTextBlock");
+                    }
+                    else
+                    {
+                        //resultStr = DataWorker.CreateUser(UserName, UserPhone, UserPosId);
+                        UpdateAllViews();
+                        SetNullValuesToProperties();
+                        win.Close();
+                    }
+                }
+                );
+            }
+        }
 
         #endregion
 

@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectMvvmByErm.View"
         mc:Ignorable="d"
-        Title="AddNewUserWindow" Height="450" Width="800">
+        Title="AddNewUserWindow" Height="450" Width="800"
+        Name="AddNewUserWin">
     <Grid>
-        
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Имя: "/>
+                <TextBox x:Name="NameTextBox" Text="{Binding UserName}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Телефон: "/>
+                <TextBox x:Name="PhoneTextBox" Text="{Binding UserPhone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Position Id: "/>
+                <ComboBox Name="PosIdComBox" Text="{Binding UserPosId}"/>
+                <!--<TextBox Name="PosIdTextBox" Text="{Binding UserPosId}"/>-->
+            </StackPanel>
+            <Button Content="Принять" Command="{Binding AddNewUser}"
+                    CommandParameter="{Binding ElementName=AddNewUserWin}"/>
+        </StackPanel>
     </Grid>
 </Window>
