@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectMvvmByErm.View"
         mc:Ignorable="d"
-        Title="AddNewPositionWindow" Height="450" Width="800">
+        Title="AddNewPositionWindow" Height="450" Width="800"
+        Name="AddNewPositionWin">
     <Grid>
-        
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Имя: "/>
+                <TextBox x:Name="NameTextBox" Text="{Binding PositionName}"
+                 MinWidth="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Зарплата: "/>
+                <TextBox x:Name="SalaryTextBox" Text="{Binding PositionSalary}"
+                 MinWidth="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Отдел: "/>
+                <ComboBox Name="DepIdComBox"
+                  MinWidth="100"
+                  ItemsSource="{Binding AllDepartments}"
+                  SelectedItem="{Binding PositionDepartment}"
+                  DisplayMemberPath="Name"/>
+            </StackPanel>
+            <Button Content="Принять" Command="{Binding AddNewPosition}"
+            CommandParameter="{Binding ElementName=AddNewPositionWin}"
+            Margin="5"
+            Width="300"
+            HorizontalAlignment="Left"/>
+        </StackPanel>
     </Grid>
 </Window>

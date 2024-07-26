@@ -46,8 +46,10 @@
                                     <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}"/>
                                     <GridViewColumn Header="Position"
                                                     DisplayMemberBinding="{Binding PositionId}"/>
+                                    <GridViewColumn Header="Salary"
+                                                    DisplayMemberBinding="{Binding Position.Salary}"/>
                                     <GridViewColumn Header="Department"
-                                                    DisplayMemberBinding="{Binding}"/>
+                                                    DisplayMemberBinding="{Binding Position.Department.Name}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>

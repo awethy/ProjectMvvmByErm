@@ -41,9 +41,14 @@ namespace ProjectMvvmByErm.ModelView
         }
 
         public string DepartmentName { get; set; }
+
         public string UserName { get; set; }
         public string UserPhone { get; set; }
-        public string UserPosId { get; set; }
+        public Position UserPosition { get; set; }
+
+        public string PositionName { get; set; }
+        public decimal PositionSalary { get; set; }
+        public Department PositionDepartment { get; set; }
 
         #region КОММАНДЫ СОЗДАНИЯ, УДАЛЕНИЕ И ИЗМЕНЕНИЯ ПОЗИЦИЙ
 
@@ -83,11 +88,52 @@ namespace ProjectMvvmByErm.ModelView
                     string resultStr = "";
                     if (UserName == null || UserName.Replace(" ", "").Length == 0)
                     {
-                        SetRedBlockControll(win, "NameTextBlock");
+                        SetRedBlockControll(win, "NameTextBox");
+                    }
+                    if (UserPhone == null || UserPhone.Replace(" ", "").Length == 0)
+                    {
+                        SetRedBlockControll(win, "PhoneTextBox");
+                    }
+                    if (UserPosition == null)
+                    {
+                        MessageBox.Show("Укажите должность!");
                     }
                     else
                     {
-                        //resultStr = DataWorker.CreateUser(UserName, UserPhone, UserPosId);
+                        resultStr = DataWorker.CreateUser(UserName, UserPhone, UserPosition);
+                        UpdateAllViews();
+                        SetNullValuesToProperties();
+                        win.Close();
+                    }
+                }
+                );
+            }
+        }
+
+        private RelayCommand addNewPosition;
+        public RelayCommand AddNewPosition
+        {
+            get
+            {
+                return addNewPosition ?? new RelayCommand(obj =>
+                {
+                    Window win = obj as Window;
+                    string resultStr = "";
+                    if (PositionName == null || PositionName.Replace(" ", "").Length == 0)
+                    {
+                        SetRedBlockControll(win, "NameTextBox");
+                    }
+                    if (PositionSalary == 0)
+                    {
+                        SetRedBlockControll(win, "SalaryTextBox");
+                    }
+                    if (PositionDepartment == null)
+                    {
+                        MessageBox.Show("Укажите отдел!");
+                    }
+                    else
+                    {
+                        resultStr = DataWorker.CreatePosition(PositionName, PositionSalary, PositionDepartment);
                         UpdateAllViews();
                         SetNullValuesToProperties();
                         win.Close();
@@ -178,9 +224,13 @@ namespace ProjectMvvmByErm.ModelView
         private void SetNullValuesToProperties()
         {
             //для пользователей
-
+            UserName = null;
+            UserPhone = null;
+            UserPosition = null;
             //для позиций
-
+            PositionName = null;
+            PositionSalary = 0;
+            PositionDepartment = null;
             //для отделов
             DepartmentName = null;
         }
@@ -188,12 +238,12 @@ namespace ProjectMvvmByErm.ModelView
 
         private void UpdateAllViews()
         {
-            UpadateAllDepartmentsView();
-            UpadateAllUsersView();
-            UpadateAllUsersView();
+            UpdateAllDepartmentsView();
+            UpdateAllUsersView();
+            UpdateAllPositionsView();
         }
 
-        private void UpadateAllDepartmentsView()
+        private void UpdateAllDepartmentsView()
         {
             AllDepartments = DataWorker.GetAllDepartments();
             MainWindowMenu.AllDepartmentsView.ItemsSource = null;
@@ -202,7 +252,7 @@ namespace ProjectMvvmByErm.ModelView
             MainWindowMenu.AllDepartmentsView.Items.Refresh();
         }
 
-        private void UpadateAllUsersView()
+        private void UpdateAllUsersView()
         {
             AllUsers = DataWorker.GetAllUsers();
             MainWindowMenu.AllUsersView.ItemsSource = null;
@@ -211,12 +261,12 @@ namespace ProjectMvvmByErm.ModelView
             MainWindowMenu.AllUsersView.Items.Refresh();
         }
 
-        private void UpadateAllPositionsView()
+        private void UpdateAllPositionsView()
         {
             AllPositions = DataWorker.GetAllPositions();
             MainWindowMenu.AllPositionsView.ItemsSource = null;
             MainWindowMenu.AllPositionsView.Items.Clear();
-            MainWindowMenu.AllPositionsView.ItemsSource = AllUsers;
+            MainWindowMenu.AllPositionsView.ItemsSource = AllPositions;
             MainWindowMenu.AllPositionsView.Items.Refresh();
         }
 
