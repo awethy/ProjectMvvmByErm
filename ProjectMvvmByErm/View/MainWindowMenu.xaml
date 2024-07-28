@@ -22,9 +22,9 @@
                                     <GridViewColumn Header="Salary"
                                                     DisplayMemberBinding="{Binding Salary}"/>
                                     <GridViewColumn Header="Count of staffs"
-                                                    DisplayMemberBinding="{Binding Users.Count}"/>
+                                                    DisplayMemberBinding="{Binding PositionUsers.Count}"/>
                                     <GridViewColumn Header="Department"
-                                                    DisplayMemberBinding="{Binding DepartmentId}"/>
+                                                    DisplayMemberBinding="{Binding PositionDepartment.Name}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -40,11 +40,11 @@
                                                     DisplayMemberBinding="{Binding Name}"/>
                                     <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}"/>
                                     <GridViewColumn Header="Position"
-                                                    DisplayMemberBinding="{Binding PositionId}"/>
+                                                    DisplayMemberBinding="{Binding UserPosition.Name}"/>
                                     <GridViewColumn Header="Salary"
-                                                    DisplayMemberBinding="{Binding Position.Salary}"/>
+                                                    DisplayMemberBinding="{Binding UserPosition.Salary}"/>
                                     <GridViewColumn Header="Department"
-                                                    DisplayMemberBinding="{Binding Position.Department.Name}"/>
+                                                    DisplayMemberBinding="{Binding UserPosition.PositionDepartment.Name}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -59,21 +59,23 @@
                                     <GridViewColumn Header="Name"
                                                     DisplayMemberBinding="{Binding Name}"/>
                                     <GridViewColumn Header="Count of positions"
-                                                    DisplayMemberBinding="{Binding Positions.Count}"/>
+                                                    DisplayMemberBinding="{Binding DepartmentPositions.Count}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
                     </TabItem>
                 </TabControl>
             </StackPanel>
-            <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
-                <StackPanel>
+            <StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <Button Margin="5" Height="30" Command="{Binding OpenAddNewUserWin}">Добавить нового сотрудника</Button>
                     <Button Margin="5" Height="30" Command="{Binding OpenAddNewPositionWin}">Добавить новую позицию</Button>
                     <Button Margin="5" Height="30" Command="{Binding OpenAddNewDepartmentWin}">Добавить новый отдел</Button>
                 </StackPanel>
-                <StackPanel>
-                    
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button Margin="5" Height="30" Command="{Binding }">Изменить данные сотрудника</Button>
+                    <Button Margin="5" Height="30" Command="{Binding }">Изменить данные позиции</Button>
+                    <Button Margin="5" Height="30" Command="{Binding }">Изменить данные отдела</Button>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

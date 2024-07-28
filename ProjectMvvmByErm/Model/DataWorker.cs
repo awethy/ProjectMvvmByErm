@@ -181,5 +181,42 @@ namespace ProjectMvvmByErm.Model
             }
             return result;
         }
+
+        //получение позиции по id позиции
+        public static Position GetPositionById(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                Position position = db.Positions.FirstOrDefault(p => p.Id == id);
+                return position;
+            }
+        }
+        //получение отдела по id отдела
+        public static Department GetDepartmentById(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                Department department = db.Departments.FirstOrDefault(p => p.Id == id);
+                return department; 
+            }
+        }
+        //получение всез пользователей позиции
+        public static List<User> GetAllUsersByIdPosition(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                List<User> users = (from user in GetAllUsers() where user.PositionId == id select user).ToList();
+                return users;
+            }
+        }
+        //получение всех поозиций отдела
+        public static List<Position> GetAllPositionsByIdDepartment(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                List<Position> positions = (from position in GetAllPositions() where position.DepartmentId == id select position).ToList();
+                return positions;
+            }
+        }
     }
 }
