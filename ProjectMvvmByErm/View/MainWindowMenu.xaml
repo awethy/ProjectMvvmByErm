@@ -8,11 +8,6 @@
         Title="MainWindowMenu" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <StackPanel Margin="20">
-                <Label HorizontalAlignment="Center" FontSize="30">
-                    MENU
-                </Label>
-            </StackPanel>
             <StackPanel>
                 <TabControl>
                     <TabItem Name="PositionsTab">
